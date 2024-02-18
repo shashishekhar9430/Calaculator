@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"> -->
+    <style>
+        .calculator
+        {
+            margin: 50px auto;
+            background-color: black;
+            height: 80vh;
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator>input
+        {
+            height: 80px;
+            width: 80%;
+            font-size: 40px;
+            text-align: right;
+        }
+
+        .calculator .btns>button
+        {
+            height: 60px;
+            width: 60px;
+            border-radius: 100px;
+            background-color: white;
+            color: black;
+            font-size: 24px;
+        }
+
+        .calculator .btns .operators
+        {
+            background-color: orangered;
+            color: white;
+        }
+
+        .calculator .btns .equal
+        {
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display">
+        <div class="btns">
+            <button class="AC" value="AC">AC</button>
+            <button class="DEL" value="DEL">DEL</button>
+            <button class="operators" value="%">%</button>
+            <button class="operators" value="/">/</button>
+        </div>
+
+        <div class="btns">
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button class="operators"  value="*">*</button>
+        </div>
+
+        <div class="btns">
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button class="operators" value="-">-</button>
+        </div>
+
+        <div class="btns">
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button class="operators" value="+">+</button>
+        </div>
+
+        <div class="btns">
+            <button value="00">00</button>
+            <button value="0">0</button>
+            <button value=".">.</button>
+            <button class="equal" value="=">=</button>
+        </div>
+    </div>
+
+
+    <script>
+          let btn = document.getElementsByTagName("button")
+        // console.log(btn);
+        let userInput = "0"
+        document.getElementById("display").value = userInput
+
+        Array.from(btn).forEach((ele) => {
+            ele.addEventListener("click", (event) => {
+                // console.log(event.target.value);
+                let value = event.target.value
+                if (value === "=") {
+                    // let result = eval(userInput)
+                    // console.log(result);
+                    userInput = eval(userInput)
+                    // document.getElementById("display").value = userInput
+                }
+                else if (value == "AC") {
+                    userInput = "0"
+                    // document.getElementById("display").value = userInput
+                }
+                else if (value == "DEL") {
+                    userInput = userInput.slice(0, userInput.length - 1)
+                    // document.getElementById("display").value = userInput
+                }
+                else{
+                    userInput += value
+                }
+                document.getElementById("display").value = userInput
+            })
+        })
+        
+        // let x = "10+20-5"
+        // console.log(eval(x));
+        
+    </script>
+</body>
+</html>
